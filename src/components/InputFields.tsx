@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getLocation, getCoords, getLocationSuggestions } from "../services/useLocation";
+import {  getCoords } from "../services/useLocation";
 import '../styles/formStyle.css'
 
 interface InputFieldsProps {
@@ -31,15 +31,17 @@ export default function InputFields({handleSubmit}: InputFieldsProps){
 
     
     useEffect(() => {
-        if (location && location.trim() !== "") {
-            getCoords(location).then((coords) => {
-                if (coords) {
-                    setLat(parseFloat(coords.lat));
-                    setLon(parseFloat(coords.lon));
-                }
-            });
+        const fillCoords = setTimeout( () => { 
+            if (location && location.trim() !== "") {
+                getCoords(location).then((coords) => {
+                    if (coords) {
+                        setLat(parseFloat(coords.lat));
+                        setLon(parseFloat(coords.lon));
+                        setCurrenrLocLabel("");
+                    }
+                });
         }
-    }, [location]);
+    }, 2000) }, [location]);
 
 
     return <>
