@@ -1,0 +1,34 @@
+.form-container {
+  display: flex;
+  justify-content: space-between; 
+  gap: 20px; 
+}
+
+.coordinates, .location {
+  flex: 1; 
+  display: flex;
+  flex-direction: column; 
+  gap: 10px;
+}
+
+.suggestions {
+  list-style: none;
+  margin: 0;
+  padding: 5px;
+  border: 1px solid #ccc;
+  max-height: 150px;
+  overflow-y: auto;
+  background: white;
+  position: absolute;
+  width: 100%;
+  z-index: 1000;
+}
+
+.suggestions li {
+  padding: 5px;
+  cursor: pointer;
+}
+
+.suggestions li:hover {
+  background: #f0f0f0;
+}
